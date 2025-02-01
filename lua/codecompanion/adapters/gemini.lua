@@ -142,7 +142,7 @@ return {
         local text = json.candidates[1].content.parts[1].text
         local model = json.modelVersion
 
-        if model == "gemini-2.0-flash-exp" then
+        if vim.startswith(model, "gemini-2.0-flash") then
           text = text:gsub("```", "")
           if context then
             text = text:gsub(context.filetype .. "\n", "")
@@ -170,6 +170,7 @@ return {
       desc = "The model that will complete your prompt. See https://ai.google.dev/gemini-api/docs/models/gemini#model-variations for additional details and options.",
       default = "gemini-1.5-flash",
       choices = {
+        "gemini-2.0-flash-thinking-exp-01-21",
         "gemini-2.0-flash-exp",
         "gemini-1.5-flash",
         "gemini-1.5-pro",
